@@ -1,9 +1,9 @@
 import React from "react";
-import "./MainInput.module.css";
+import style from "./MainInput.module.scss";
 
 type MainInputProps = {
   value: number | undefined;
-  setValue: React.Dispatch<React.SetStateAction<number | null>>;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
   title: string;
 };
 
@@ -15,10 +15,10 @@ const MainInput = (props: MainInputProps) => {
   };
 
   return (
-    <div className="container">
-      <div className="title">{props.title}</div>
+    <div className={style.container}>
+      <div className={style.title}>{props.title}</div>
       <input
-        className="input"
+        className={style.input}
         type="number"
         value={props.value}
         onChange={(e) => handleChange(parseInt(e.target.value))}

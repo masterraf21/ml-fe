@@ -1,6 +1,7 @@
 import React, { Component, FunctionComponent, useState } from "react";
+import { Dropdown, MainInput, Navbar } from "../../components";
 import Swal from "sweetalert2";
-import "./MainPage.modules.css";
+import style from "./MainPage.module.scss";
 import axios from "axios";
 import withReactContent from "sweetalert2-react-content";
 
@@ -24,6 +25,8 @@ import withReactContent from "sweetalert2-react-content";
 // }
 
 const API_URL: string = process.env.REACT_APP_API_URL as string;
+const YES: string = "Pinjaman Anda Diterima";
+const NO: string = "Pinjaman Anda Tidak Diterima";
 
 const yesOptions: IDropdownOption[] = [
   {
@@ -58,6 +61,7 @@ const MainPage = () => {
     suggestedDuration: 0,
   });
 
+  const [result, setResult] = useState(YES);
   const [hasKTP, setHasKTP] = useState("");
   const [isWni, setIsWni] = useState("");
   const [isDomisiliIndo, setIsDomisiliIndo] = useState("");
@@ -73,15 +77,140 @@ const MainPage = () => {
   const [loanAmount, setLoanAmount] = useState(0.0);
   const [monthlyIncome, setMonthlyIncome] = useState(0.0);
   const [monthlySpending, setMonthlySpending] = useState(0.0);
-  const [suggestedDuration, setSuggesteDuration] = useState(0);
+  const [suggestedDuration, setSuggestedDuration] = useState(0);
 
-  const submit = () => {};
-
-  // const
+  const submit = () => {
+    alert("HELLO");
+  };
 
   return (
-    <div className="container">
-      <h2>Hello Windy</h2>
+    <div className={style.container}>
+      <div className={style.result}>Result: {result}</div>
+      <div className={style.inputContainer}>
+        <MainInput
+          setValue={setLoanAmount}
+          title="Berapa uang yang ingin anda pinjam?"
+          value={loanAmount}
+        />
+
+        <MainInput
+          setValue={setSuggestedDuration}
+          title="Berapa lama anda akan berencana mengembalikan?"
+          value={suggestedDuration}
+        />
+
+        <Dropdown
+          options={yesOptions}
+          placeholder="KTP"
+          setValue={setHasKTP}
+          title="Apakah anda punya punya KTP?"
+          value={hasKTP}
+        />
+
+        <Dropdown
+          options={yesOptions}
+          placeholder="Umur diatas 21"
+          setValue={setIsAgeOver21}
+          title="Apakah anda berumur di atas 21?"
+          value={isAgeOver21}
+        />
+
+        <Dropdown
+          options={yesOptions}
+          placeholder="Domisili"
+          setValue={setIsDomisiliIndo}
+          title="Apakah anda berdomisili di Indonesia"
+          value={isDomisiliIndo}
+        />
+
+        <Dropdown
+          options={yesOptions}
+          placeholder="Status WNI"
+          setValue={setIsWni}
+          title="Apakah anda berstatus  WNI?"
+          value={isWni}
+        />
+
+        <Dropdown
+          title="Apakah anda memiliki pekerjaan tetap?"
+          options={yesOptions}
+          placeholder="Pekerjaan tetap"
+          setValue={setHasSteadyJob}
+          value={hasSteadyJob}
+        />
+
+        <Dropdown
+          title="Apakah anda memiliki pendapatan tetap?"
+          options={yesOptions}
+          placeholder="Pendapatan tetap"
+          setValue={setHasSteadyIncome}
+          value={hasSteadyIncome}
+        />
+
+        <Dropdown
+          title="Apakah anda memiliki pendapatan bulanan?"
+          options={yesOptions}
+          placeholder="Pendapatan bulanan"
+          setValue={setHasMonthlyIncome}
+          value={hasMonthlyIncome}
+        />
+
+        <Dropdown
+          title="Apakah anda memiliki rekening bank pribadi?"
+          options={yesOptions}
+          placeholder="Rekening pribadi"
+          setValue={setHasPersonalBank}
+          value={hasPersonalBank}
+        />
+
+        <MainInput
+          title="Berapa pendapatan bulanan anda?"
+          setValue={setMonthlyIncome}
+          value={monthlyIncome}
+        />
+
+        <MainInput
+          title="Berapa pengeluaran bulanan anda?"
+          setValue={setMonthlySpending}
+          value={monthlySpending}
+        />
+
+        <Dropdown
+          title="Apakah anda punya aset berharga sebagai jaminan?"
+          options={yesOptions}
+          placeholder="Aset berharga"
+          setValue={setHasValuableAsset}
+          value={hasValuableAsset}
+        />
+
+        <Dropdown
+          title="Apakah anda memiliki kerabat yang bisa dihubungi?"
+          options={yesOptions}
+          placeholder="Kerabat"
+          setValue={setHasReachableRelative}
+          value={hasReachableRelative}
+        />
+
+        <Dropdown
+          title="Apakah bersedia memenuhi ketentuan syarat pembayaran dan jaminan"
+          options={yesOptions}
+          placeholder="Syarat pembayaran"
+          setValue={setIsComplyPayment}
+          value={isComplyPayment}
+        />
+
+        <Dropdown
+          title="Apakah bersedia dengan ketentuan dan syarat layanan?"
+          options={yesOptions}
+          placeholder="Syarat layanan"
+          setValue={setIsComplyService}
+          value={isComplyService}
+        />
+
+        <button onClick={submit} className={style.loginButton} type="button">
+          Cek Pinjaman
+        </button>
+      </div>
     </div>
   );
 };

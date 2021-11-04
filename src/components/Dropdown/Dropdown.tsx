@@ -1,5 +1,5 @@
 import React from "react";
-import "./Dropdown.module.css";
+import style from "./Dropdown.module.scss";
 
 type DropdownProps = {
   value: string | undefined;
@@ -17,10 +17,10 @@ const Dropdown = (props: DropdownProps) => {
   };
 
   return (
-    <div className="container">
-      <div className="title">{props.title}</div>
+    <div className={style.container}>
+      <div className={style.title}>{props.title}</div>
       <select
-        className="input"
+        className={style.input}
         value={props.value}
         onChange={(e) => props.setValue(e.target.value)}
       >
