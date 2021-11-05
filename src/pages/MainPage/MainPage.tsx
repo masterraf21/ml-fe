@@ -5,25 +5,6 @@ import style from "./MainPage.module.scss";
 import axios from "axios";
 import withReactContent from "sweetalert2-react-content";
 
-// interface ICustomerData {
-//   hasKtp: Boolean;
-//   isWni: Boolean;
-//   isDomisiliIndo: Boolean;
-//   IsAgeOver21: Boolean;
-//   hasSteadyJob: Boolean;
-//   hasSteadyIncome: Boolean;
-//   hasMonthlyIncome: Boolean;
-//   hasPersonalBank: Boolean;
-//   monthlyIncome: Number;
-//   monthlySpending: Number;
-//   suggestedDuration: Number;
-//   loanAmount: Number;
-//   hasValuableAsset: Boolean;
-//   hasReachableRelative: Boolean;
-//   isComplyPayment: Boolean;
-//   isComplyService: Boolean;
-// }
-
 const API_URL: string = process.env.REACT_APP_API_URL as string;
 const YES: string = "Pinjaman Anda Diterima";
 const NO: string = "Pinjaman Anda Tidak Diterima";
@@ -42,26 +23,7 @@ const yesOptions: IDropdownOption[] = [
 const MySwal = withReactContent(Swal);
 
 const MainPage = () => {
-  const [customerData, setCustomerData] = useState<ICustomerData | undefined>({
-    hasKtp: false,
-    isWni: false,
-    isDomisiliIndo: false,
-    isAgeOver21: false,
-    hasSteadyIncome: false,
-    hasSteadyJob: false,
-    hasMonthlyIncome: false,
-    hasPersonalBank: false,
-    hasReachableRelative: false,
-    hasValuableAsset: false,
-    isComplyPayment: false,
-    isComplyService: false,
-    loanAmount: 0.0,
-    monthlyIncome: 0.0,
-    monthlySpending: 0.0,
-    suggestedDuration: 0,
-  });
-
-  const [result, setResult] = useState(YES);
+  const [result, setResult] = useState("");
   const [hasKTP, setHasKTP] = useState("");
   const [isWni, setIsWni] = useState("");
   const [isDomisiliIndo, setIsDomisiliIndo] = useState("");
@@ -79,8 +41,45 @@ const MainPage = () => {
   const [monthlySpending, setMonthlySpending] = useState(0.0);
   const [suggestedDuration, setSuggestedDuration] = useState(0);
 
-  const submit = () => {
-    alert("HELLO");
+  let data = {
+    has_ktp: hasKTP,
+    is_wni: isWni,
+    is_domisili_indo: isDomisiliIndo,
+    is_age_over_21: isAgeOver21,
+    has_steady_job: hasSteadyJob,
+    has_steady_income: hasSteadyIncome,
+    has_monthly_income: hasMonthlyIncome,
+    has_personal_bank_account: hasPersonalBank,
+    monthly_income: monthlyIncome,
+    monthly_spending: monthlySpending,
+    suggested_duration: suggestedDuration,
+    loan_amount: loanAmount,
+    has_valuable_asset: hasValuableAsset,
+    has_reachable_relative: hasReachableRelative,
+    is_comply_with_payment_terms: isComplyPayment,
+    is_comply_with_service_terms: isComplyService,
+  };
+
+  const submit = async () => {
+    MySwal.fire({
+      title: "Please wait",
+      showCloseButton: true,
+      // showSpinner: true,
+      showConfirmButton: false,
+    });
+    try {
+      const result = await axios.post(`${API_URL}/api`, data);
+
+      setTimeout(() => MySwal.close(), 500);
+    } catch (e) {
+      MySwal.close();
+      MySwal.fire({
+        title: "Ups terjadi error!",
+        icon: "error",
+        text: `error: ${e}`,
+        timer: 2000,
+      });
+    }
   };
 
   return (
@@ -206,7 +205,8 @@ const MainPage = () => {
           setValue={setIsComplyService}
           value={isComplyService}
         />
-
+      </div>
+      <div className={style.loginContainer}>
         <button onClick={submit} className={style.loginButton} type="button">
           Cek Pinjaman
         </button>
