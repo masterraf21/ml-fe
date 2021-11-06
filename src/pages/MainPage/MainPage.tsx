@@ -69,7 +69,12 @@ const MainPage = () => {
     });
     try {
       const result = await axios.post(`${API_URL}/api`, data);
-
+      if (result.data.data === "y") {
+        setResult(YES);
+      } else {
+        setResult(NO);
+      }
+      console.log(result);
       setTimeout(() => MySwal.close(), 500);
     } catch (e) {
       MySwal.close();
