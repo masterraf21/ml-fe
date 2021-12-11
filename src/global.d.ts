@@ -18,6 +18,6 @@ interface ICustomerData {
 }
 
 interface IDropdownOption {
-  value: string;
+  value: string | Number;
   label: string;
 }

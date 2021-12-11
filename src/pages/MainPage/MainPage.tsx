@@ -6,17 +6,78 @@ import axios from "axios";
 import withReactContent from "sweetalert2-react-content";
 
 const API_URL: string = process.env.REACT_APP_API_URL as string;
-const YES: string = "Pinjaman Anda Diterima";
-const NO: string = "Pinjaman Anda Tidak Diterima";
+const YES: string = "Loyal Customer";
+const NO: string = "Disloyal Customer";
 
-const yesOptions: IDropdownOption[] = [
+const yesOptions: IDropdownOption[] = [];
+const genderOptions: IDropdownOption[] = [
   {
-    label: "Ya",
-    value: "y",
+    label: "Female",
+    value: 0,
   },
   {
-    label: "Tidak",
-    value: "n",
+    label: "Male",
+    value: 1,
+  },
+];
+
+const satisfiedOptions: IDropdownOption[] = [
+  {
+    label: "Neutral or Dissatisfied",
+    value: 0,
+  },
+  {
+    label: "Satisfied",
+    value: 1,
+  },
+];
+
+const travelOptions: IDropdownOption[] = [
+  {
+    label: "Business Travel",
+    value: 0,
+  },
+  {
+    label: "Personal Travel",
+    value: 1,
+  },
+];
+
+const classOptions: IDropdownOption[] = [
+  {
+    label: "Business",
+    value: 0,
+  },
+  {
+    label: "Eco",
+    value: 1,
+  },
+  {
+    label: "Eco Plus",
+    value: 2,
+  },
+];
+
+const scaleOptions: IDropdownOption[] = [
+  {
+    label: "1",
+    value: 1,
+  },
+  {
+    label: "2",
+    value: 2,
+  },
+  {
+    label: "3",
+    value: 3,
+  },
+  {
+    label: "4",
+    value: 4,
+  },
+  {
+    label: "5",
+    value: 5,
   },
 ];
 
@@ -69,9 +130,9 @@ const MainPage = () => {
     });
     try {
       const result = await axios.post(`${API_URL}/api`, data);
-      if (result.data.data === "y") {
+      if (result.data.data === "0") {
         setResult(YES);
-      } else {
+      } else if (result.data.data === "1") {
         setResult(NO);
       }
       console.log(result);
