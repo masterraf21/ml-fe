@@ -86,7 +86,7 @@ const MySwal = withReactContent(Swal);
 const MainPage = () => {
   const [result, setResult] = useState("");
   const [age, setAge] = useState(0);
-  const [distance, setDistance] = useState(0.0);
+  const [distance, setDistance] = useState(0);
   const [departureDelay, setDepartureDelay] = useState(0);
   const [arrivalDelay, setArrivalDelay] = useState(0);
   const [gender, setGender] = useState(0);
@@ -132,6 +132,7 @@ const MainPage = () => {
   };
 
   const submit = async () => {
+    console.log(data);
     MySwal.fire({
       title: "Please wait",
       showCloseButton: true,
@@ -162,24 +163,10 @@ const MainPage = () => {
     <div className={style.container}>
       <div className={style.result}>Result: {result}</div>
       <div className={style.inputContainer}>
-        <MainInput
+        {/* <MainInput
           setValue={setLoanAmount}
           title="Berapa uang yang ingin anda pinjam?"
           value={loanAmount}
-        />
-
-        <MainInput
-          setValue={setSuggestedDuration}
-          title="Berapa lama anda akan berencana mengembalikan?"
-          value={suggestedDuration}
-        />
-
-        <Dropdown
-          options={yesOptions}
-          placeholder="KTP"
-          setValue={setHasKTP}
-          title="Apakah anda punya punya KTP?"
-          value={hasKTP}
         />
 
         <Dropdown
@@ -188,103 +175,129 @@ const MainPage = () => {
           setValue={setIsAgeOver21}
           title="Apakah anda berumur di atas 21?"
           value={isAgeOver21}
-        />
-
-        <Dropdown
-          options={yesOptions}
-          placeholder="Domisili"
-          setValue={setIsDomisiliIndo}
-          title="Apakah anda berdomisili di Indonesia"
-          value={isDomisiliIndo}
-        />
-
-        <Dropdown
-          options={yesOptions}
-          placeholder="Status WNI"
-          setValue={setIsWni}
-          title="Apakah anda berstatus  WNI?"
-          value={isWni}
-        />
-
-        <Dropdown
-          title="Apakah anda memiliki pekerjaan tetap?"
-          options={yesOptions}
-          placeholder="Pekerjaan tetap"
-          setValue={setHasSteadyJob}
-          value={hasSteadyJob}
-        />
-
-        <Dropdown
-          title="Apakah anda memiliki pendapatan tetap?"
-          options={yesOptions}
-          placeholder="Pendapatan tetap"
-          setValue={setHasSteadyIncome}
-          value={hasSteadyIncome}
-        />
-
-        <Dropdown
-          title="Apakah anda memiliki pendapatan bulanan?"
-          options={yesOptions}
-          placeholder="Pendapatan bulanan"
-          setValue={setHasMonthlyIncome}
-          value={hasMonthlyIncome}
-        />
-
-        <Dropdown
-          title="Apakah anda memiliki rekening bank pribadi?"
-          options={yesOptions}
-          placeholder="Rekening pribadi"
-          setValue={setHasPersonalBank}
-          value={hasPersonalBank}
-        />
-
+        /> */}
+        <MainInput setValue={setAge} title="Usia" value={age} />
         <MainInput
-          title="Berapa pendapatan bulanan anda?"
-          setValue={setMonthlyIncome}
-          value={monthlyIncome}
+          setValue={setDistance}
+          title="Jarak Penerbangan"
+          value={distance}
         />
-
         <MainInput
-          title="Berapa pengeluaran bulanan anda?"
-          setValue={setMonthlySpending}
-          value={monthlySpending}
+          setValue={setDepartureDelay}
+          title="Keterlambatan Penerbangan"
+          value={departureDelay}
         />
-
-        <Dropdown
-          title="Apakah anda punya aset berharga sebagai jaminan?"
-          options={yesOptions}
-          placeholder="Aset berharga"
-          setValue={setHasValuableAsset}
-          value={hasValuableAsset}
+        <MainInput
+          setValue={setArrivalDelay}
+          title="Keterlambatan Kedatangan"
+          value={arrivalDelay}
         />
-
         <Dropdown
-          title="Apakah anda memiliki kerabat yang bisa dihubungi?"
-          options={yesOptions}
-          placeholder="Kerabat"
-          setValue={setHasReachableRelative}
-          value={hasReachableRelative}
+          options={genderOptions}
+          placeholder="Gender"
+          setValue={setGender}
+          title="Gender"
+          value={gender}
         />
-
         <Dropdown
-          title="Apakah bersedia memenuhi ketentuan syarat pembayaran dan jaminan"
-          options={yesOptions}
-          placeholder="Syarat pembayaran"
-          setValue={setIsComplyPayment}
-          value={isComplyPayment}
+          options={satisfiedOptions}
+          placeholder="Kepuasan"
+          setValue={setSatisfied}
+          title="Kepuasan"
+          value={satisfied}
         />
-
         <Dropdown
-          title="Apakah bersedia dengan ketentuan dan syarat layanan?"
-          options={yesOptions}
-          placeholder="Syarat layanan"
-          setValue={setIsComplyService}
-          value={isComplyService}
+          options={travelOptions}
+          placeholder="Jenis Penerbangan"
+          setValue={setTravelType}
+          title="Jenis Penerbangan"
+          value={travelType}
+        />
+        <Dropdown
+          options={classOptions}
+          placeholder="Kelas Penerbangan"
+          setValue={setFlightClass}
+          title="Kelas Penerbangan"
+          value={flightClass}
+        />
+        <Dropdown
+          options={scaleOptions}
+          placeholder="Wifi"
+          setValue={setWifi}
+          title="Rating Wifi"
+          value={wifi}
+        />
+        <Dropdown
+          options={scaleOptions}
+          placeholder="Kenyamanan"
+          setValue={setDepArrConvenient}
+          title="Rating Kenyamanan Kedatangan & Keberangkatan"
+          value={depArrConvenient}
+        />
+        <Dropdown
+          options={scaleOptions}
+          setValue={setGateLocation}
+          value={gateLocation}
+          title="Rating Kenyamanan Gerbang"
+        />
+        <Dropdown
+          options={scaleOptions}
+          setValue={setfoodDrink}
+          value={foodDrink}
+          title="Rating Makanan Minuman"
+        />
+        <Dropdown
+          options={scaleOptions}
+          setValue={setSeatComfort}
+          value={seatComfort}
+          title="Rating Kenyamanan Tempat Duduk"
+        />
+        <Dropdown
+          options={scaleOptions}
+          setValue={setEntertainment}
+          title="Rating Hiburan"
+          value={entertainment}
+        />
+        <Dropdown
+          options={scaleOptions}
+          title="Rating Pelayanan Onboard"
+          setValue={setOnboardService}
+          value={onboardService}
+        />
+        <Dropdown
+          options={scaleOptions}
+          title="Rating Ruang Kaki"
+          setValue={setLegRoomService}
+          value={legRoomService}
+        />
+        <Dropdown
+          options={scaleOptions}
+          title="Rating Pelayanan Bagasi"
+          setValue={setBaggage}
+          value={baggage}
+        />
+        <Dropdown
+          options={scaleOptions}
+          title="Rating Pelayanan Check-in"
+          setValue={setCheckin}
+          value={checkin}
+        />
+        <Dropdown
+          options={scaleOptions}
+          title="Rating Pelayanan Inflight"
+          setValue={setInflight}
+          value={inflight}
+        />
+        <Dropdown
+          options={scaleOptions}
+          title="Rating Kebersihan"
+          setValue={setCleanliness}
+          value={cleanliness}
         />
       </div>
       <div className={style.loginContainer}>
         <button onClick={submit} className={style.loginButton} type="button">
-          Cek Pinjaman
+          Cek Loyalty
         </button>
       </div>
     </div>
@@ -292,12 +305,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-// export class MainPage extends Component<{}, MainProps> {
-//   render() {
-//     return (
-//       <p>
-//         <div>Hello</div>
-//       </p>
-//     );
-//   }
-// }

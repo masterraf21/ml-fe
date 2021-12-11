@@ -2,8 +2,8 @@ version: "3.7"
 
 services:
   ui:
-    image: masterraf21/kbs-ui:1.0
+    build: .
     environment:
-      - REACT_APP_API_URL=https://kbs-api.interlinked.site
+      - REACT_APP_API_URL=https://ml-api.interlinked.site
     ports:
-      - "3000:80"
+      - "3300:80"
