@@ -85,40 +85,50 @@ const MySwal = withReactContent(Swal);
 
 const MainPage = () => {
   const [result, setResult] = useState("");
-  const [hasKTP, setHasKTP] = useState("");
-  const [isWni, setIsWni] = useState("");
-  const [isDomisiliIndo, setIsDomisiliIndo] = useState("");
-  const [isAgeOver21, setIsAgeOver21] = useState("");
-  const [hasSteadyIncome, setHasSteadyIncome] = useState("");
-  const [hasSteadyJob, setHasSteadyJob] = useState("");
-  const [hasMonthlyIncome, setHasMonthlyIncome] = useState("");
-  const [hasPersonalBank, setHasPersonalBank] = useState("");
-  const [hasReachableRelative, setHasReachableRelative] = useState("");
-  const [hasValuableAsset, setHasValuableAsset] = useState("");
-  const [isComplyPayment, setIsComplyPayment] = useState("");
-  const [isComplyService, setIsComplyService] = useState("");
-  const [loanAmount, setLoanAmount] = useState(0.0);
-  const [monthlyIncome, setMonthlyIncome] = useState(0.0);
-  const [monthlySpending, setMonthlySpending] = useState(0.0);
-  const [suggestedDuration, setSuggestedDuration] = useState(0);
+  const [age, setAge] = useState(0);
+  const [distance, setDistance] = useState(0.0);
+  const [departureDelay, setDepartureDelay] = useState(0);
+  const [arrivalDelay, setArrivalDelay] = useState(0);
+  const [gender, setGender] = useState(0);
+  const [satisfied, setSatisfied] = useState(0);
+  const [travelType, setTravelType] = useState(0);
+  const [flightClass, setFlightClass] = useState(0);
+  const [wifi, setWifi] = useState(0);
+  const [depArrConvenient, setDepArrConvenient] = useState(0);
+  const [gateLocation, setGateLocation] = useState(0);
+  const [foodDrink, setfoodDrink] = useState(0);
+  const [onlineBoarding, setOnlineBoarding] = useState(0);
+  const [seatComfort, setSeatComfort] = useState(0);
+  const [entertainment, setEntertainment] = useState(0);
+  const [onboardService, setOnboardService] = useState(0);
+  const [legRoomService, setLegRoomService] = useState(0);
+  const [baggage, setBaggage] = useState(0);
+  const [checkin, setCheckin] = useState(0);
+  const [inflight, setInflight] = useState(0);
+  const [cleanliness, setCleanliness] = useState(0);
 
   let data = {
-    has_ktp: hasKTP,
-    is_wni: isWni,
-    is_domisili_indo: isDomisiliIndo,
-    is_age_over_21: isAgeOver21,
-    has_steady_job: hasSteadyJob,
-    has_steady_income: hasSteadyIncome,
-    has_monthly_income: hasMonthlyIncome,
-    has_personal_bank_account: hasPersonalBank,
-    monthly_income: monthlyIncome,
-    monthly_spending: monthlySpending,
-    suggested_duration: suggestedDuration,
-    loan_amount: loanAmount,
-    has_valuable_asset: hasValuableAsset,
-    has_reachable_relative: hasReachableRelative,
-    is_comply_with_payment_terms: isComplyPayment,
-    is_comply_with_service_terms: isComplyService,
+    age: age,
+    flight_distance: distance,
+    departure_delay: departureDelay,
+    arrival_delay: arrivalDelay,
+    gender: gender,
+    satisfied: satisfied,
+    travel_type: travelType,
+    class: flightClass,
+    wifi: wifi,
+    departure_arrival_convenient: depArrConvenient,
+    gate_location: gateLocation,
+    food_drink: foodDrink,
+    online_boarding: onlineBoarding,
+    seat_comfort: seatComfort,
+    entertainment: entertainment,
+    onboard_service: onboardService,
+    leg_room_service: legRoomService,
+    baggage: baggage,
+    checkin: checkin,
+    inflight: inflight,
+    cleanliness: cleanliness,
   };
 
   const submit = async () => {
