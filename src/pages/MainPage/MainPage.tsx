@@ -1,5 +1,5 @@
-import React, { Component, FunctionComponent, useState } from "react";
-import { Dropdown, MainInput, Navbar } from "../../components";
+import React, { useState } from "react";
+import { Dropdown, MainInput } from "../../components";
 import Swal from "sweetalert2";
 import style from "./MainPage.module.scss";
 import axios from "axios";
@@ -9,7 +9,7 @@ const API_URL: string = process.env.REACT_APP_API_URL as string;
 const YES: string = "Loyal Customer";
 const NO: string = "Disloyal Customer";
 
-const yesOptions: IDropdownOption[] = [];
+// const yesOptions: IDropdownOption[] = [];
 const genderOptions: IDropdownOption[] = [
   {
     label: "Female",
@@ -88,7 +88,7 @@ const MainPage = () => {
   const [age, setAge] = useState(0);
   const [distance, setDistance] = useState(0);
   const [departureDelay, setDepartureDelay] = useState(0);
-  const [arrivalDelay, setArrivalDelay] = useState(0);
+  const [arrivalDelay, setArrivalDelay] = useState(0.0);
   const [gender, setGender] = useState(0);
   const [satisfied, setSatisfied] = useState(0);
   const [travelType, setTravelType] = useState(0);
@@ -97,6 +97,7 @@ const MainPage = () => {
   const [depArrConvenient, setDepArrConvenient] = useState(0);
   const [gateLocation, setGateLocation] = useState(0);
   const [foodDrink, setfoodDrink] = useState(0);
+  const [onlineBooking, setOnlineBooking] = useState(0);
   const [onlineBoarding, setOnlineBoarding] = useState(0);
   const [seatComfort, setSeatComfort] = useState(0);
   const [entertainment, setEntertainment] = useState(0);
@@ -111,13 +112,16 @@ const MainPage = () => {
     age: age,
     flight_distance: distance,
     departure_delay: departureDelay,
-    arrival_delay: arrivalDelay,
+    arrival_delay: parseFloat(arrivalDelay.toString()).toFixed(1),
+
     gender: gender,
     satisfied: satisfied,
     travel_type: travelType,
     class: flightClass,
+
     wifi: wifi,
     departure_arrival_convenient: depArrConvenient,
+    online_booking: onlineBooking,
     gate_location: gateLocation,
     food_drink: foodDrink,
     online_boarding: onlineBoarding,
@@ -163,19 +167,6 @@ const MainPage = () => {
     <div className={style.container}>
       <div className={style.result}>Result: {result}</div>
       <div className={style.inputContainer}>
-        {/* <MainInput
-          setValue={setLoanAmount}
-          title="Berapa uang yang ingin anda pinjam?"
-          value={loanAmount}
-        />
-
-        <Dropdown
-          options={yesOptions}
-          placeholder="Umur diatas 21"
-          setValue={setIsAgeOver21}
-          title="Apakah anda berumur di atas 21?"
-          value={isAgeOver21}
-        /> */}
         <MainInput setValue={setAge} title="Usia" value={age} />
         <MainInput
           setValue={setDistance}
@@ -227,12 +218,19 @@ const MainPage = () => {
           title="Rating Wifi"
           value={wifi}
         />
+
         <Dropdown
           options={scaleOptions}
           placeholder="Kenyamanan"
           setValue={setDepArrConvenient}
           title="Rating Kenyamanan Kedatangan & Keberangkatan"
           value={depArrConvenient}
+        />
+        <Dropdown
+          options={scaleOptions}
+          setValue={setOnlineBooking}
+          value={onlineBooking}
+          title="Rating Online Booking"
         />
         <Dropdown
           options={scaleOptions}
@@ -245,6 +243,13 @@ const MainPage = () => {
           setValue={setfoodDrink}
           value={foodDrink}
           title="Rating Makanan Minuman"
+        />
+
+        <Dropdown
+          options={travelOptions}
+          setValue={setOnlineBoarding}
+          value={onlineBoarding}
+          title="Rating Online Boarding"
         />
         <Dropdown
           options={scaleOptions}
