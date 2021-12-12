@@ -167,20 +167,20 @@ const MainPage = () => {
     <div className={style.container}>
       <div className={style.result}>Result: {result}</div>
       <div className={style.inputContainer}>
-        <MainInput setValue={setAge} title="Usia" value={age} />
+        <MainInput setValue={setAge} title="Age" value={age} />
         <MainInput
           setValue={setDistance}
-          title="Jarak Penerbangan"
+          title="Flight Distance"
           value={distance}
         />
         <MainInput
           setValue={setDepartureDelay}
-          title="Keterlambatan Penerbangan"
+          title="Departure Delay"
           value={departureDelay}
         />
         <MainInput
           setValue={setArrivalDelay}
-          title="Keterlambatan Kedatangan"
+          title="Arrival Delay"
           value={arrivalDelay}
         />
         <Dropdown
@@ -194,26 +194,27 @@ const MainPage = () => {
           options={satisfiedOptions}
           placeholder="Kepuasan"
           setValue={setSatisfied}
-          title="Kepuasan"
+          title="Satisfaction"
           value={satisfied}
         />
         <Dropdown
           options={travelOptions}
           placeholder="Jenis Penerbangan"
           setValue={setTravelType}
-          title="Jenis Penerbangan"
+          title="Travel Type"
           value={travelType}
         />
         <Dropdown
           options={classOptions}
           placeholder="Kelas Penerbangan"
           setValue={setFlightClass}
-          title="Kelas Penerbangan"
+          title="Class"
           value={flightClass}
         />
+
         <Dropdown
           options={scaleOptions}
-          placeholder="Wifi"
+          placeholder="Wifi Rating"
           setValue={setWifi}
           title="Rating Wifi"
           value={wifi}
@@ -223,79 +224,79 @@ const MainPage = () => {
           options={scaleOptions}
           placeholder="Kenyamanan"
           setValue={setDepArrConvenient}
-          title="Rating Kenyamanan Kedatangan & Keberangkatan"
+          title="Departure and Arrival Convenient"
           value={depArrConvenient}
         />
         <Dropdown
           options={scaleOptions}
           setValue={setOnlineBooking}
           value={onlineBooking}
-          title="Rating Online Booking"
+          title="Online Booking Rating"
         />
         <Dropdown
           options={scaleOptions}
           setValue={setGateLocation}
           value={gateLocation}
-          title="Rating Kenyamanan Gerbang"
+          title="Gate Location Rating"
         />
         <Dropdown
           options={scaleOptions}
           setValue={setfoodDrink}
           value={foodDrink}
-          title="Rating Makanan Minuman"
+          title="Food and Drink Rating"
         />
 
         <Dropdown
-          options={travelOptions}
+          options={scaleOptions}
           setValue={setOnlineBoarding}
           value={onlineBoarding}
-          title="Rating Online Boarding"
+          title="Online Boarding Rating"
         />
         <Dropdown
           options={scaleOptions}
           setValue={setSeatComfort}
           value={seatComfort}
-          title="Rating Kenyamanan Tempat Duduk"
+          title="Seat Comfort Rating"
         />
         <Dropdown
           options={scaleOptions}
           setValue={setEntertainment}
-          title="Rating Hiburan"
+          title="Inflight Entertainment Rating"
           value={entertainment}
         />
         <Dropdown
           options={scaleOptions}
-          title="Rating Pelayanan Onboard"
+          title="Onboard Service Rating "
           setValue={setOnboardService}
           value={onboardService}
         />
         <Dropdown
           options={scaleOptions}
-          title="Rating Ruang Kaki"
+          title="Leg Room Service Rating"
           setValue={setLegRoomService}
           value={legRoomService}
         />
         <Dropdown
           options={scaleOptions}
-          title="Rating Pelayanan Bagasi"
+          title="Baggage Service Rating"
           setValue={setBaggage}
           value={baggage}
         />
         <Dropdown
           options={scaleOptions}
-          title="Rating Pelayanan Check-in"
+          title="Check-In Rating"
           setValue={setCheckin}
           value={checkin}
         />
         <Dropdown
           options={scaleOptions}
-          title="Rating Pelayanan Inflight"
+          title="Inflight Service Rating"
           setValue={setInflight}
           value={inflight}
         />
         <Dropdown
           options={scaleOptions}
-          title="Rating Kebersihan"
+          title="Cleanliness Rating"
           setValue={setCleanliness}
           value={cleanliness}
         />
