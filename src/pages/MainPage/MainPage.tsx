@@ -5,7 +5,7 @@ import style from "./MainPage.module.scss";
 import axios from "axios";
 import withReactContent from "sweetalert2-react-content";
 
-const API_URL: string = process.env.REACT_APP_API_URL as string;
+const API_URL: string = "https://ml-api.interlinked.site";
 const YES: string = "Loyal Customer";
 const NO: string = "Disloyal Customer";
 
@@ -136,7 +136,7 @@ const MainPage = () => {
   };
 
   const submit = async () => {
-    console.log(data);
+    // console.log(data);
     MySwal.fire({
       title: "Please wait",
       showCloseButton: true,
@@ -150,7 +150,7 @@ const MainPage = () => {
       } else if (result.data.data === "1") {
         setResult(NO);
       }
-      console.log(result);
+      // console.log(result);
       setTimeout(() => MySwal.close(), 500);
     } catch (e) {
       MySwal.close();

@@ -1,5 +1,8 @@
 # Name the node stage "builder"
 FROM node:14-alpine AS builder
+
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL $REACT_APP_API_URL
 # Set working directory
 WORKDIR /app
 # Copy all files from current directory to working dir in image
